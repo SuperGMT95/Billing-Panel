@@ -202,7 +202,7 @@
             </div>
         </a>
 
-        <a href="#" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
+        <a href="https://supergmt95.github.io/View-plans/" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
             <div class="card-content">
                 <h3>MINECRAFT HOSTING 🧱</h3>
                 <p>Lag-Free • DDoS Protected</p>
@@ -228,7 +228,6 @@
     </div>
 
     <script>
-        // Snowfall Logic
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -244,11 +243,11 @@
         }
         setInterval(createSnowflake, 200);
 
-        // Parallax Effect for Background
         document.addEventListener('mousemove', (e) => {
             const moveX = (e.clientX - window.innerWidth / 2) / 50;
             const moveY = (e.clientY - window.innerHeight / 2) / 50;
-            document.querySelector('.background').style.transform = `translate(${moveX}px, ${moveY}px)`;
+            const bg = document.querySelector('.background');
+            if(bg) bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
     </script>
 </body>
