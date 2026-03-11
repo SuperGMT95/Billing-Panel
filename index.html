@@ -1,1 +1,255 @@
-6
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreMMC Billing Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Settings */
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #050816;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background { 
+            position: fixed; 
+            inset: -20px; 
+            background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExamJlOHR5Y2Fod2s0ZWg2MzNuZzZqZXJjdTloeTJjZ2hrcTNpeTZ0ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/skzEY0OczUGwhamSxk/giphy.gif') center/cover; 
+            filter: blur(8px) brightness(0.5); 
+            z-index: -1; 
+            transition: transform 0.2s ease-out; 
+        }
+
+        /* Snowfall Effect */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 10;
+            font-size: 1.5em;
+            color: #fff;
+            opacity: 0.8;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh); }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: #00aaff; }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+
+        .dropdown { position: relative; display: inline-block; cursor: pointer; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #111;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            z-index: 100;
+            border-radius: 8px;
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover { background: #222; }
+
+        /* Currency/Language Section */
+        .selectors { display: flex; gap: 10px; }
+        select {
+            background: #222;
+            color: white;
+            border: 1px solid #444;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { opacity: 0.8; max-width: 600px; margin: 0 auto 30px; }
+
+        .btn-container { display: flex; justify-content: center; gap: 20px; }
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-blue { background: #007bff; color: white; }
+        .btn-outline { border: 1px solid #fff; color: white; }
+        .btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+        /* Grid Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 10%;
+        }
+
+        .card {
+            background-size: cover !important;
+            background-position: center !important;
+            height: 250px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,170,255,0.3); }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+
+        .card-content { position: relative; z-index: 2; }
+        .card h3 { margin: 0; font-size: 1.5rem; }
+        .card p { font-size: 0.9rem; opacity: 0.8; margin: 5px 0; }
+
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <nav>
+        <div class="logo">⚡ CoreMMC</div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <span>📂 Panels ▾</span>
+                <div class="dropdown-content">
+                    <a href="#">🏠 Home Panel</a>
+                    <a href="#">💻 Main-Panel</a>
+                    <a href="#">🤖 Discord Bot Panel</a>
+                    <a href="#">🌐 Web Hosting</a>
+                    <a href="#">🛠️ Hosting Panel</a>
+                    <a href="#">🎮 Minecraft Hosting Panel</a>
+                    <a href="https://discord.com/channels/1331996056971641055/1457357769320698032">📞 Contact support</a>
+                </div>
+            </div>
+
+            <div class="selectors">
+                <select>
+                    <option>🇮🇳 INR (₹)</option>
+                    <option>🇺🇸 USD ($)</option>
+                </select>
+                <select>
+                    <option>English</option>
+                    <option>Hindi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>CoreMMC billing panel 🚀</h1>
+        <p>This is the official CoreMMC billing panel. For high-performance servers and specialized hosting services.</p>
+        
+        <div class="btn-container">
+            <a href="https://supergmt95.github.io/minecraft-hosting/" class="btn btn-blue">⚡ Get Started</a>
+            <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn btn-outline">🎧 Open Ticket</a>
+        </div>
+    </section>
+
+    <div class="grid-container">
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481317876085559540/image_share_1773244087673.jpg?ex=69b2e047&is=69b18ec7&hm=b21ba170bc3b44a7408cb1571ff117d4865a8e14307b06cf99b64865ae36cebd&');">
+            <div class="card-content">
+                <h3>VPS HOSTING 🖥️</h3>
+                <p>High Performance • Full Control</p>
+                <span>View Service →</span>
+            </div>
+        </a>
+
+        <a href="#" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
+            <div class="card-content">
+                <h3>MINECRAFT HOSTING 🧱</h3>
+                <p>Lag-Free • DDoS Protected</p>
+                <span>View Service →</span>
+            </div>
+        </a>
+
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320104343109702/image_share_1773244622633.gif?ex=69b2e25a&is=69b190da&hm=bf1e8c9a6078a514c8233f8f1e41f9e1ce7635d8a8d1ef6395e28377336d4a1a&');">
+            <div class="card-content">
+                <h3>BOT HOSTING 🤖</h3>
+                <p>24/7 Online • Auto Scale</p>
+                <span>View Service →</span>
+            </div>
+        </a>
+
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320528202567813/image_share_1773244724563.gif?ex=69b2e2bf&is=69b1913f&hm=269c8ce4ac503164b6ee50b4f29264f43b6c4bec56ba599ee73056c863f4676d&');">
+            <div class="card-content">
+                <h3>WEB HOSTING 🌐</h3>
+                <p>Fast • Secure • Reliable</p>
+                <span>View Service →</span>
+            </div>
+        </a>
+    </div>
+
+    <script>
+        // Snowfall Logic
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+        setInterval(createSnowflake, 200);
+
+        // Parallax Effect for Background
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            document.querySelector('.background').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body>
+</html>
