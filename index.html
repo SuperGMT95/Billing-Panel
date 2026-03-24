@@ -6,7 +6,7 @@
     <title>CoreMMC Billing Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* CSS Settings */
+        /* [SAARE PURANE CSS SETTINGS RAKHE HAIN] */
         body {
             font-family: 'Arial', sans-serif;
             color: #fff;
@@ -26,7 +26,6 @@
             transition: transform 0.2s ease-out; 
         }
 
-        /* Snowfall Effect */
         .snowflake {
             position: fixed;
             top: -10px;
@@ -43,7 +42,6 @@
             to { transform: translateY(105vh); }
         }
 
-        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -57,9 +55,7 @@
         }
 
         .logo { font-size: 24px; font-weight: bold; color: #00aaff; }
-
         .nav-links { display: flex; align-items: center; gap: 20px; }
-
         .dropdown { position: relative; display: inline-block; cursor: pointer; }
         .dropdown-content {
             display: none;
@@ -81,7 +77,6 @@
         }
         .dropdown-content a:hover { background: #222; }
 
-        /* Currency/Language Section */
         .selectors { display: flex; gap: 10px; }
         select {
             background: #222;
@@ -91,12 +86,7 @@
             border-radius: 5px;
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
+        .hero { text-align: center; padding: 100px 20px; }
         .hero h1 { font-size: 3rem; margin-bottom: 10px; }
         .hero p { opacity: 0.8; max-width: 600px; margin: 0 auto 30px; }
 
@@ -117,7 +107,6 @@
         .btn-outline { border: 1px solid #fff; color: white; background: transparent; }
         .btn:hover { opacity: 0.8; transform: scale(1.05); }
 
-        /* Grid Section */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -155,7 +144,7 @@
         .card h3 { margin: 0; font-size: 1.5rem; }
         .card p { font-size: 0.9rem; opacity: 0.8; margin: 5px 0; }
 
-        /* Modal & Auth CSS */
+        /* MODAL STYLE */
         .modal {
             display: none;
             position: fixed;
@@ -176,16 +165,9 @@
             border-radius: 15px;
             position: relative;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0,170,255,0.2);
         }
 
-        .close {
-            position: absolute;
-            right: 20px; top: 10px;
-            color: #aaa;
-            font-size: 28px;
-            cursor: pointer;
-        }
+        .close { position: absolute; right: 20px; top: 10px; color: #aaa; font-size: 28px; cursor: pointer; }
 
         .auth-input {
             width: 100%;
@@ -198,18 +180,37 @@
             box-sizing: border-box;
         }
 
-        .auth-input:focus { border-color: #00aaff; outline: none; }
+        .scroll-box { max-height: 350px; overflow-y: auto; padding-right: 10px; }
 
-        .scroll-box {
-            max-height: 350px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 15px;
+        /* NEW: SERVICES SECTION (Photo waala look) */
+        .services-dashboard { padding: 40px 10%; }
+        .service-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 5px solid #00aaff;
+            margin-bottom: 20px;
         }
+        .status-badge { background: #28a745; padding: 5px 10px; border-radius: 5px; font-size: 12px; }
 
-        /* Custom Scrollbar for Register */
-        .scroll-box::-webkit-scrollbar { width: 5px; }
-        .scroll-box::-webkit-scrollbar-thumb { background: #00aaff; border-radius: 10px; }
+        /* NEW: FOOTER STYLE */
+        footer {
+            background: rgba(0,0,0,0.8);
+            padding: 50px 10% 20px;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-logo { font-size: 24px; color: #00aaff; font-weight: bold; margin-bottom: 15px; }
+        .footer-links a { color: #aaa; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.3s; }
+        .footer-links a:hover { color: #00aaff; }
 
     </style>
 </head>
@@ -238,23 +239,16 @@
                 <div class="dropdown-content">
                     <a href="javascript:void(0)" onclick="openModal('loginModal')">🔑 Login / Register</a>
                     <hr style="border: 0.5px solid #333; margin: 5px 0;">
+                    <a href="javascript:void(0)" onclick="openModal('paymentModal')"><i class="fas fa-credit-card"></i> Payment Methods</a>
                     <a href="#"><i class="fas fa-id-card"></i> Personal Details</a>
-                    <a href="#"><i class="fas fa-shield-alt"></i> Security</a>
-                    <a href="#"><i class="fas fa-wallet"></i> Credits</a>
-                    <a href="#"><i class="fas fa-credit-card"></i> Payment Methods</a>
+                    <a href="#"><i class="fas fa-wallet"></i> Credits: ₹0.00</a>
                     <a href="#"><i class="fab fa-discord"></i> Discord Link</a>
                 </div>
             </div>
 
             <div class="selectors">
-                <select>
-                    <option>🇮🇳 INR (₹)</option>
-                    <option>🇺🇸 USD ($)</option>
-                </select>
-                <select>
-                    <option>English</option>
-                    <option>Hindi</option>
-                </select>
+                <select><option>🇮🇳 INR (₹)</option><option>🇺🇸 USD ($)</option></select>
+                <select><option>English</option><option>Hindi</option></select>
             </div>
         </div>
     </nav>
@@ -262,87 +256,106 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('loginModal')">&times;</span>
-            
             <div id="loginForm">
-                <h2 style="color:#00aaff;">Welcome Back</h2>
+                <h2 style="color:#00aaff;">Login to CoreMMC</h2>
                 <input type="email" placeholder="Email Address" class="auth-input">
                 <input type="password" placeholder="Password" class="auth-input">
                 <button class="btn btn-blue" style="width:100%; margin-top:10px;">Login</button>
-                <p style="font-size: 14px; margin-top:15px;">New here? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff; text-decoration:none;">Create an Account</a></p>
+                <p>New? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff;">Create Account</a></p>
             </div>
-
             <div id="registerForm" style="display:none;">
-                <h2 style="color:#00aaff;">Create Account</h2>
+                <h2 style="color:#00aaff;">Register</h2>
                 <div class="scroll-box">
-                    <input type="email" placeholder="Email Address" class="auth-input">
+                    <input type="text" placeholder="Username" class="auth-input">
+                    <input type="email" placeholder="Email" class="auth-input">
                     <input type="password" placeholder="Password" class="auth-input">
-                    <input type="password" placeholder="Repeat Password" class="auth-input">
-                    <input type="text" placeholder="Full Home Address" class="auth-input">
-                    
+                    <input type="text" placeholder="Address" class="auth-input">
                     <select class="auth-input">
-                        <option value="" disabled selected>Select Your Location</option>
                         <option>India 🇮🇳</option>
                         <option>Pakistan 🇵🇰</option>
                         <option>Germany 🇩🇪</option>
-                        <option>United States 🇺🇸</option>
-                        <option>United Kingdom 🇬🇧</option>
-                        <option>Bangladesh 🇧🇩</option>
-                        <option>Canada 🇨🇦</option>
-                        <option>Russia 🇷🇺</option>
                     </select>
                 </div>
-                <button class="btn btn-blue" style="width:100%;">Register Now</button>
-                <p style="font-size: 14px; margin-top:15px;">Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff; text-decoration:none;">Login</a></p>
+                <button class="btn btn-blue" style="width:100%;">Register</button>
+                <p>Have account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff;">Login</a></p>
             </div>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+            <h2 style="color:#00aaff;">Payment Methods</h2>
+            <div style="text-align: left; padding: 10px;">
+                <p><i class="fas fa-qrcode"></i> <strong>UPI / QR Scan:</strong> scan the QR in billing section.</p>
+                <p><i class="fab fa-stripe-s"></i> <strong>Stripe:</strong> Credit/Debit Cards supported.</p>
+                <p><i class="fas fa-wallet"></i> <strong>Credits:</strong> Use your CoreMMC Wallet.</p>
+            </div>
+            <button class="btn btn-blue" style="width:100%;">Add Funds Now</button>
         </div>
     </div>
 
     <section class="hero">
         <h1>CoreMMC billing panel 🚀</h1>
-        <p>This is the official CoreMMC billing panel. For high-performance servers and specialized hosting services.</p>
-        
+        <p>Manage your high-performance servers and hosting services from one place.</p>
         <div class="btn-container">
             <a href="javascript:void(0)" onclick="openModal('loginModal')" class="btn btn-blue">⚡ Get Started</a>
-            <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn btn-outline">🎧 Open Ticket</a>
+            <a href="#" class="btn btn-outline">🎧 Support Ticket</a>
         </div>
     </section>
 
+    <div class="services-dashboard">
+        <h2 style="margin-bottom: 20px;"><i class="fas fa-server"></i> Active Services</h2>
+        <div class="service-item">
+            <div>
+                <h4 style="margin:0;">📦 SHEEP (Intel Minecraft Hosting)</h4>
+                <small style="color:#aaa;">Expires at: Apr 21, 2026</small>
+            </div>
+            <span class="status-badge">ACTIVE</span>
+        </div>
+    </div>
+
     <div class="grid-container">
         <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481317876085559540/image_share_1773244087673.jpg?ex=69b2e047&is=69b18ec7&hm=b21ba170bc3b44a7408cb1571ff117d4865a8e14307b06cf99b64865ae36cebd&');">
-            <div class="card-content">
-                <h3>VPS HOSTING 🖥️</h3>
-                <p>High Performance • Full Control</p>
-                <span>View Service →</span>
-            </div>
+            <div class="card-content"><h3>VPS HOSTING 🖥️</h3><p>High Performance • Full Control</p></div>
         </a>
-
-        <a href="https://supergmt95.github.io/View-plans/" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
-            <div class="card-content">
-                <h3>MINECRAFT HOSTING 🧱</h3>
-                <p>Lag-Free • DDoS Protected</p>
-                <span>View Service →</span>
-            </div>
+        <a href="#" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
+            <div class="card-content"><h3>MINECRAFT HOSTING 🧱</h3><p>Lag-Free • DDoS Protected</p></div>
         </a>
-
-        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320104343109702/image_share_1773244622633.gif?ex=69b2e25a&is=69b190da&hm=bf1e8c9a6078a514c8233f8f1e41f9e1ce7635d8a8d1ef6395e28377336d4a1a&');">
-            <div class="card-content">
-                <h3>BOT HOSTING 🤖</h3>
-                <p>24/7 Online • Auto Scale</p>
-                <span>View Service →</span>
-            </div>
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320104343109702/image_share_1773244622633.gif');">
+            <div class="card-content"><h3>BOT HOSTING 🤖</h3><p>24/7 Online • Auto Scale</p></div>
         </a>
-
-        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320528202567813/image_share_1773244724563.gif?ex=69b2e2bf&is=69b1913f&hm=269c8ce4ac503164b6ee50b4f29264f43b6c4bec56ba599ee73056c863f4676d&');">
-            <div class="card-content">
-                <h3>WEB HOSTING 🌐</h3>
-                <p>Fast • Secure • Reliable</p>
-                <span>View Service →</span>
-            </div>
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320528202567813/image_share_1773244724563.gif');">
+            <div class="card-content"><h3>WEB HOSTING 🌐</h3><p>Fast • Secure • Reliable</p></div>
         </a>
     </div>
 
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">⚡ CoreMMC</div>
+                <p style="color:#aaa; font-size:14px;">Reliable hosting solutions for businesses of all sizes. Professional performance at your fingertips.</p>
+                <div style="font-size:20px; gap:15px; display:flex;">
+                    <i class="fab fa-discord"></i> <i class="fab fa-instagram"></i> <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Ticket Support</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <a href="#"><i class="fas fa-envelope"></i> support@coremmc.cloud</a>
+            </div>
+        </div>
+        <hr style="border:0.5px solid #222; margin:30px 0;">
+        <p style="text-align:center; color:#555; font-size:12px;">&copy; 2026 CoreMMC Hosting. All rights reserved.</p>
+    </footer>
+
     <script>
-        // Snowfall Effect
+        // Snowfall & Parallax Logic (Same as before)
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -355,7 +368,6 @@
         }
         setInterval(createSnowflake, 200);
 
-        // Background Parallax
         document.addEventListener('mousemove', (e) => {
             const moveX = (e.clientX - window.innerWidth / 2) / 50;
             const moveY = (e.clientY - window.innerHeight / 2) / 50;
@@ -363,26 +375,16 @@
             if(bg) bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
 
-        // Modal Functions
+        // Modal Logic
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
-
         function toggleAuth() {
             const login = document.getElementById('loginForm');
             const register = document.getElementById('registerForm');
-            if(login.style.display === "none") {
-                login.style.display = "block";
-                register.style.display = "none";
-            } else {
-                login.style.display = "none";
-                register.style.display = "block";
-            }
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target == modal) { modal.style.display = "none"; }
+            login.style.display = login.style.display === "none" ? "block" : "none";
+            register.style.display = register.style.display === "none" ? "block" : "none";
         }
     </script>
 </body>
-</html>
+    </html>
+    
