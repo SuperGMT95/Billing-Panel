@@ -6,7 +6,7 @@
     <title>CoreMMC Billing Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* CSS Settings */
+        /* [PURANA SARA CSS RAKHA HAI] */
         body {
             font-family: 'Arial', sans-serif;
             color: #fff;
@@ -26,7 +26,6 @@
             transition: transform 0.2s ease-out; 
         }
 
-        /* Snowfall Effect */
         .snowflake {
             position: fixed;
             top: -10px;
@@ -43,7 +42,6 @@
             to { transform: translateY(105vh); }
         }
 
-        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -57,7 +55,6 @@
         }
 
         .logo { font-size: 24px; font-weight: bold; color: #00aaff; }
-
         .nav-links { display: flex; align-items: center; gap: 20px; }
 
         .dropdown { position: relative; display: inline-block; cursor: pointer; }
@@ -81,7 +78,6 @@
         }
         .dropdown-content a:hover { background: #222; }
 
-        /* Currency/Language Section */
         .selectors { display: flex; gap: 10px; }
         select {
             background: #222;
@@ -91,12 +87,7 @@
             border-radius: 5px;
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
+        .hero { text-align: center; padding: 100px 20px; }
         .hero h1 { font-size: 3rem; margin-bottom: 10px; }
         .hero p { opacity: 0.8; max-width: 600px; margin: 0 auto 30px; }
 
@@ -108,16 +99,13 @@
             font-weight: bold;
             transition: 0.3s;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            border: none;
+            align-items: center; gap: 10px;
+            cursor: pointer; border: none;
         }
         .btn-blue { background: #007bff; color: white; }
         .btn-outline { border: 1px solid #fff; color: white; background: transparent; }
         .btn:hover { opacity: 0.8; transform: scale(1.05); }
 
-        /* Grid Section */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -138,24 +126,18 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
-            text-decoration: none;
-            color: white;
+            text-decoration: none; color: white;
         }
-
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,170,255,0.3); }
 
         .card::before {
             content: "";
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         }
 
         .card-content { position: relative; z-index: 2; }
-        .card h3 { margin: 0; font-size: 1.5rem; }
-        .card p { font-size: 0.9rem; opacity: 0.8; margin: 5px 0; }
 
-        /* Modal & Auth CSS */
+        /* [MODALS STYLE] */
         .modal {
             display: none;
             position: fixed;
@@ -176,65 +158,100 @@
             border-radius: 15px;
             position: relative;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0,170,255,0.2);
         }
 
-        .close {
-            position: absolute;
-            right: 20px; top: 10px;
-            color: #aaa;
-            font-size: 28px;
-            cursor: pointer;
-        }
+        .close { position: absolute; right: 20px; top: 10px; color: #aaa; font-size: 28px; cursor: pointer; }
 
         .auth-input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            background: #222;
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: white;
-            box-sizing: border-box;
+            width: 100%; padding: 12px; margin: 8px 0;
+            background: #222; border: 1px solid #444;
+            border-radius: 5px; color: white; box-sizing: border-box;
         }
 
-        .auth-input:focus { border-color: #00aaff; outline: none; }
+        .scroll-box { max-height: 400px; overflow-y: auto; padding-right: 10px; text-align: left; }
 
-        .scroll-box {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .scroll-box::-webkit-scrollbar { width: 5px; }
-        .scroll-box::-webkit-scrollbar-thumb { background: #00aaff; border-radius: 10px; }
-
-        /* Active Service Styles */
-        .service-group { margin-bottom: 20px; }
-        .service-group h4 { border-bottom: 1px solid #333; padding-bottom: 5px; color: #00aaff; }
-        
         .service-item {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 10px; padding: 15px;
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 10px; border-left: 4px solid #00aaff;
+        }
+
+        .status-badge { background: #28a745; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; }
+
+        /* [NEW: FULLSCREEN PAYMENT CSS] */
+        #paymentFullscreenPage {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 3000;
+            color: #111;
+            overflow-y: auto;
+            padding-bottom: 50px;
+        }
+
+        .pay-header {
+            background: #f8f9fa;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pay-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+        }
+
+        @media (max-width: 850px) { .pay-container { grid-template-columns: 1fr; } }
+
+        .method-card {
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            border-left: 4px solid #00aaff;
+            gap: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 15px;
         }
 
-        .status-badge {
-            background: #28a745;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
+        .method-card:hover { border-color: #00aaff; background: #f0faff; }
+        .method-card img { width: 45px; height: 45px; object-fit: contain; }
+
+        .checkout-form {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
+        .pay-input {
+            width: 100%; padding: 14px; margin: 10px 0;
+            border: 1px solid #ccc; border-radius: 8px; font-size: 14px;
+        }
+
+        .qr-box {
+            text-align: center; padding: 20px;
+            border: 2px dashed #00aaff; border-radius: 10px;
+            margin-top: 20px; display: none;
+        }
+
+        #payNotification {
+            display: none;
+            position: fixed; top: 20px; right: 20px;
+            background: #28a745; color: white;
+            padding: 15px 25px; border-radius: 8px;
+            z-index: 4000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -265,22 +282,15 @@
                     <a href="javascript:void(0)" onclick="openModal('loginModal')">🔑 Login / Register</a>
                     <hr style="border: 0.5px solid #333; margin: 5px 0;">
                     <a href="#"><i class="fas fa-id-card"></i> Personal Details</a>
-                    <a href="#"><i class="fas fa-shield-alt"></i> Security</a>
+                    <a href="javascript:void(0)" onclick="openPaymentPage()"><i class="fas fa-credit-card"></i> Payment Methods</a>
                     <a href="#"><i class="fas fa-wallet"></i> Credits</a>
-                    <a href="#"><i class="fas fa-credit-card"></i> Payment Methods</a>
                     <a href="#"><i class="fab fa-discord"></i> Discord Link</a>
                 </div>
             </div>
 
             <div class="selectors">
-                <select>
-                    <option>🇮🇳 INR (₹)</option>
-                    <option>🇺🇸 USD ($)</option>
-                </select>
-                <select>
-                    <option>English</option>
-                    <option>Hindi</option>
-                </select>
+                <select><option>🇮🇳 INR (₹)</option><option>🇺🇸 USD ($)</option></select>
+                <select><option>English</option><option>Hindi</option></select>
             </div>
         </div>
     </nav>
@@ -289,51 +299,9 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('activeServicesModal')">&times;</span>
             <h2 style="color:#00aaff; margin-bottom: 20px;"><i class="fas fa-server"></i> Your Active Services</h2>
-            
             <div class="scroll-box">
-                <div class="service-group">
-                    <h4>Minecraft Hosting 🧱</h4>
-                    <div class="service-item">
-                        <div>
-                            <strong>📦 SHEEP (Intel Plan)</strong><br>
-                            <small style="color: #aaa;">Expires: Apr 21, 2026</small>
-                        </div>
-                        <span class="status-badge">ACTIVE</span>
-                    </div>
-                </div>
-
-                <div class="service-group">
-                    <h4>VPS Hosting 🖥️</h4>
-                    <div class="service-item">
-                        <div>
-                            <strong>💻 Core-VPS-01 (India)</strong><br>
-                            <small style="color: #aaa;">Expires: May 12, 2026</small>
-                        </div>
-                        <span class="status-badge">ACTIVE</span>
-                    </div>
-                </div>
-
-                <div class="service-group">
-                    <h4>Bot Hosting 🤖</h4>
-                    <div class="service-item">
-                        <div>
-                            <strong>🤖 Discord-Bot-Plus</strong><br>
-                            <small style="color: #aaa;">Expires: Apr 30, 2026</small>
-                        </div>
-                        <span class="status-badge">ACTIVE</span>
-                    </div>
-                </div>
-
-                <div class="service-group">
-                    <h4>Web Hosting 🌐</h4>
-                    <div class="service-item">
-                        <div>
-                            <strong>🌐 Core-Web-Entry</strong><br>
-                            <small style="color: #aaa;">Expires: Jun 15, 2026</small>
-                        </div>
-                        <span class="status-badge">ACTIVE</span>
-                    </div>
-                </div>
+                <div class="service-item"><div><strong>📦 Minecraft (Intel)</strong><br><small>Expires: Apr 2026</small></div><span class="status-badge">ACTIVE</span></div>
+                <div class="service-item"><div><strong>💻 Core-VPS-01</strong><br><small>Expires: May 2026</small></div><span class="status-badge">ACTIVE</span></div>
             </div>
         </div>
     </div>
@@ -341,130 +309,164 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('loginModal')">&times;</span>
-            
             <div id="loginForm">
-                <h2 style="color:#00aaff;">Welcome Back</h2>
-                <input type="email" placeholder="Email Address" class="auth-input">
+                <h2 style="color:#00aaff;">Login</h2>
+                <input type="email" placeholder="Email" class="auth-input">
                 <input type="password" placeholder="Password" class="auth-input">
-                <button class="btn btn-blue" style="width:100%; margin-top:10px;">Login</button>
-                <p style="font-size: 14px; margin-top:15px;">New here? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff; text-decoration:none;">Create an Account</a></p>
+                <button class="btn btn-blue" style="width:100%;">Login</button>
+                <p>New? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff;">Create Account</a></p>
             </div>
-
             <div id="registerForm" style="display:none;">
-                <h2 style="color:#00aaff;">Create Account</h2>
-                <div class="scroll-box">
-                    <input type="email" placeholder="Email Address" class="auth-input">
-                    <input type="password" placeholder="Password" class="auth-input">
-                    <input type="password" placeholder="Repeat Password" class="auth-input">
-                    <input type="text" placeholder="Full Home Address" class="auth-input">
-                    
-                    <select class="auth-input">
-                        <option value="" disabled selected>Select Your Location</option>
-                        <option>India 🇮🇳</option>
-                        <option>Pakistan 🇵🇰</option>
-                        <option>Germany 🇩🇪</option>
-                        <option>United States 🇺🇸</option>
-                        <option>United Kingdom 🇬🇧</option>
-                        <option>Bangladesh 🇧🇩</option>
-                        <option>Canada 🇨🇦</option>
-                        <option>Russia 🇷🇺</option>
-                    </select>
-                </div>
-                <button class="btn btn-blue" style="width:100%;">Register Now</button>
-                <p style="font-size: 14px; margin-top:15px;">Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff; text-decoration:none;">Login</a></p>
+                <h2 style="color:#00aaff;">Register</h2>
+                <input type="email" placeholder="Email" class="auth-input">
+                <input type="password" placeholder="Password" class="auth-input">
+                <button class="btn btn-blue" style="width:100%;">Register</button>
+                <p>Have account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color:#00aaff;">Login</a></p>
             </div>
         </div>
     </div>
 
     <section class="hero">
         <h1>CoreMMC billing panel 🚀</h1>
-        <p>This is the official CoreMMC billing panel. For high-performance servers and specialized hosting services.</p>
-        
+        <p>Manage your high-performance servers and hosting services from one place.</p>
         <div class="btn-container">
             <a href="javascript:void(0)" onclick="openModal('loginModal')" class="btn btn-blue">⚡ Get Started</a>
-            <a href="https://discord.com/channels/1331996056971641055/1457357769320698032" class="btn btn-outline">🎧 Open Ticket</a>
+            <a href="#" class="btn btn-outline">🎧 Support Ticket</a>
         </div>
     </section>
 
     <div class="grid-container">
-        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481317876085559540/image_share_1773244087673.jpg?ex=69b2e047&is=69b18ec7&hm=b21ba170bc3b44a7408cb1571ff117d4865a8e14307b06cf99b64865ae36cebd&');">
-            <div class="card-content">
-                <h3>VPS HOSTING 🖥️</h3>
-                <p>High Performance • Full Control</p>
-                <span>View Service →</span>
-            </div>
+        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481317876085559540/image_share_1773244087673.jpg');">
+            <div class="card-content"><h3>VPS HOSTING 🖥️</h3><p>High Performance • Full Control</p></div>
         </a>
-
-        <a href="https://supergmt95.github.io/View-plans/" class="card" style="background: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXc1MDBzOHhldTkxaHZrZTZ6MmduYmZqNHllMzB3NWgweDYzZ2JrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u8SzbBXnp9h98V9QxZ/giphy.gif');">
-            <div class="card-content">
-                <h3>MINECRAFT HOSTING 🧱</h3>
-                <p>Lag-Free • DDoS Protected</p>
-                <span>View Service →</span>
-            </div>
-        </a>
-
-        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320104343109702/image_share_1773244622633.gif?ex=69b2e25a&is=69b190da&hm=bf1e8c9a6078a514c8233f8f1e41f9e1ce7635d8a8d1ef6395e28377336d4a1a&');">
-            <div class="card-content">
-                <h3>BOT HOSTING 🤖</h3>
-                <p>24/7 Online • Auto Scale</p>
-                <span>View Service →</span>
-            </div>
-        </a>
-
-        <a href="#" class="card" style="background: url('https://cdn.discordapp.com/attachments/1457594773010518086/1481320528202567813/image_share_1773244724563.gif?ex=69b2e2bf&is=69b1913f&hm=269c8ce4ac503164b6ee50b4f29264f43b6c4bec56ba599ee73056c863f4676d&');">
-            <div class="card-content">
-                <h3>WEB HOSTING 🌐</h3>
-                <p>Fast • Secure • Reliable</p>
-                <span>View Service →</span>
-            </div>
+        <a href="#" class="card" style="background: url('https://media2.giphy.com/media/u8SzbBXnp9h98V9QxZ/giphy.gif');">
+            <div class="card-content"><h3>MINECRAFT HOSTING 🧱</h3><p>Lag-Free • DDoS Protected</p></div>
         </a>
     </div>
 
+    <div id="paymentFullscreenPage">
+        <div class="pay-header">
+            <div style="font-size: 24px; font-weight: bold; color: #007bff;">⚡ CoreMMC Secure Checkout</div>
+            <button onclick="closePaymentPage()" style="background:none; border:none; font-size:35px; cursor:pointer;">&times;</button>
+        </div>
+
+        <div class="pay-container">
+            <div>
+                <h2>Select Payment Method 💳</h2>
+                <p style="color: #666; margin-bottom: 30px;">Choose your preferred way to pay.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+                    <div class="method-card" onclick="showPayForm('upi')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-logo-icon.png" alt="PhonePe">
+                        <div><strong>PhonePe 🇮🇳</strong><br><small>UPI & Wallet</small></div>
+                    </div>
+                    <div class="method-card" onclick="showPayForm('upi')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png" alt="GPay">
+                        <div><strong>Google Pay 🇮🇳</strong><br><small>Fast & Secure</small></div>
+                    </div>
+                    <div class="method-card" onclick="showPayForm('upi')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/paytm-icon.png" alt="Paytm">
+                        <div><strong>Paytm 🇮🇳</strong><br><small>Easy UPI</small></div>
+                    </div>
+                    <div class="method-card" onclick="showPayForm('intl')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/stripe-icon.png" alt="Stripe">
+                        <div><strong>Credit Card 🌍</strong><br><small>International</small></div>
+                    </div>
+                    <div class="method-card" onclick="showPayForm('intl')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/paypal-icon.png" alt="PayPal">
+                        <div><strong>PayPal 🌍</strong><br><small>Global Payment</small></div>
+                    </div>
+                    <div class="method-card" onclick="showPayForm('intl')">
+                        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/bitcoin-icon.png" alt="Crypto">
+                        <div><strong>Crypto 🛡️</strong><br><small>BTC, ETH, LTC</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-form" id="checkoutFormSection" style="display: none;">
+                <h3 id="payTitle">Checkout Details 📝</h3>
+                <input type="email" placeholder="📧 Email Address" class="pay-input">
+                <input type="text" placeholder="📱 Phone Number" class="pay-input">
+                <input type="password" placeholder="🔑 Password" class="pay-input">
+                <input type="password" placeholder="🔄 Repeat Password" class="pay-input">
+                
+                <div id="qrSection" class="qr-box">
+                    <p><b>Scan QR to Pay</b> 🤳</p>
+                    <img src="https://raw.githubusercontent.com/SuperGMT95/CoreMMC/main/1000078949.jpg" style="width: 100%; max-width: 250px; border-radius: 12px; margin: 10px 0;" alt="Payment QR">
+                    <p style="font-size: 12px; color: #666;">Payment detect hone par turant notification aayegi 🔔</p>
+                </div>
+
+                <button onclick="startPaymentProcess()" class="btn btn-blue" style="width: 100%; margin-top: 20px; justify-content: center;">Confirm Payment 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="payNotification">
+        <i class="fas fa-check-circle"></i> <b>Success!</b> Service activated automatically. ⚡
+    </div>
+
     <script>
-        // Snowfall Effect
+        // Snowfall & Parallax
         function createSnowflake() {
             const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.innerHTML = '❄';
+            snowflake.classList.add('snowflake'); snowflake.innerHTML = '❄';
             snowflake.style.left = Math.random() * 100 + 'vw';
             snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
             snowflake.style.opacity = Math.random();
             document.body.appendChild(snowflake);
-            setTimeout(() => { snowflake.remove(); }, 5000);
+            setTimeout(() => snowflake.remove(), 5000);
         }
         setInterval(createSnowflake, 200);
 
-        // Background Parallax
         document.addEventListener('mousemove', (e) => {
             const moveX = (e.clientX - window.innerWidth / 2) / 50;
             const moveY = (e.clientY - window.innerHeight / 2) / 50;
-            const bg = document.querySelector('.background');
-            if(bg) bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            document.querySelector('.background').style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
 
-        // Modal Functions
+        // Modals
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
-
         function toggleAuth() {
-            const login = document.getElementById('loginForm');
-            const register = document.getElementById('registerForm');
-            if(login.style.display === "none") {
-                login.style.display = "block";
-                register.style.display = "none";
+            const l = document.getElementById('loginForm'), r = document.getElementById('registerForm');
+            l.style.display = l.style.display === "none" ? "block" : "none";
+            r.style.display = r.style.display === "none" ? "block" : "none";
+        }
+
+        // Payment Logic
+        function openPaymentPage() { 
+            document.getElementById('paymentFullscreenPage').style.display = 'block'; 
+            document.body.style.overflow = 'hidden';
+        }
+        function closePaymentPage() { 
+            document.getElementById('paymentFullscreenPage').style.display = 'none'; 
+            document.body.style.overflow = 'auto';
+        }
+
+        function showPayForm(type) {
+            document.getElementById('checkoutFormSection').style.display = 'block';
+            const qr = document.getElementById('qrSection');
+            if(type === 'upi') {
+                qr.style.display = 'block';
+                document.getElementById('payTitle').innerText = "India Payment Details 🇮🇳";
             } else {
-                login.style.display = "none";
-                register.style.display = "block";
+                qr.style.display = 'none';
+                document.getElementById('payTitle').innerText = "International Payment 🌍";
             }
         }
 
-        window.onclick = function(event) {
-            const loginModal = document.getElementById('loginModal');
-            const servicesModal = document.getElementById('activeServicesModal');
-            if (event.target == loginModal) { loginModal.style.display = "none"; }
-            if (event.target == servicesModal) { servicesModal.style.display = "none"; }
+        function startPaymentProcess() {
+            const btn = event.target;
+            btn.innerText = "Detecting Payment... ⏳";
+            setTimeout(() => {
+                document.getElementById('payNotification').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('payNotification').style.display = 'none';
+                    closePaymentPage();
+                }, 4000);
+            }, 3000);
         }
     </script>
 </body>
-    </html>
-    
+</html>
+                                                                                          
